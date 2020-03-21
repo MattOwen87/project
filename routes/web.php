@@ -24,3 +24,7 @@ Route::get('/profile', 'ProfileController@show')->name('profile.show');
 Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
 
 Route::post('/profile/edit', 'ProfileController@update')->name('profile.update');
+
+Route::get('/profile/password', 'ProfileController@passwordEdit')->name('password.edit');
+
+Route::post('/profile/password', 'ProfileController@passwordUpdate')->name('password.update');
