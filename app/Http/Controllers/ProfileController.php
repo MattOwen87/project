@@ -94,7 +94,7 @@ class ProfileController extends Controller
         }
       }
 
-    public function passwordUpdate(Request $request){
+    public function passwordChange(Request $request){
 
       $validate = $request->validate([
         'oldPassword' => 'required|min:8',

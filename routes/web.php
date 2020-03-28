@@ -29,4 +29,4 @@ Route::post('/profile/edit', 'ProfileController@update')->name('profile.update')
 
 Route::get('/profile/password', 'ProfileController@passwordEdit')->name('password.edit');
 
-Route::post('/profile/password', 'ProfileController@passwordUpdate')->name('password.update');
+Route::post('/profile/password', 'ProfileController@passwordChange')->name('password.change');
