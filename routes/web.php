@@ -30,3 +30,7 @@ Route::post('/profile/edit', 'ProfileController@update')->name('profile.update')
 Route::get('/profile/password', 'ProfileController@passwordEdit')->name('password.edit');
 
 Route::post('/profile/password', 'ProfileController@passwordChange')->name('password.change');
+
+Route::get('/profile/image', 'ProfileController@image')->name('profile.image');
+
+Route::post('/profile/image', 'ProfileController@imageEdit')->name('image.edit');

@@ -58,6 +58,9 @@
                                     <a class="dropdown-item" href="{{ route('profile.show') }}">
                                         {{ __('View Profile') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('profile.image') }}">
+                                        {{ __('Images') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                         {{ __('Edit Profile') }}
                                     </a>

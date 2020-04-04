@@ -118,4 +118,30 @@ class ProfileController extends Controller
         }
       }
     }
+
+    public function image(){
+      $user = User::find(Auth::user()->id);
+
+      if($user){
+        //USER EXISTS
+       return view('image')->withUser($user);
+     }else{
+        //RETURN FALSE, USER DOES NOT EXIST
+        return redirect()->back();
+      }
+    }
+
+    public function imageEdit(Request $request){
+      $user = User::find(Auth::user()->id);
+      if($request->has('avatar')){
+        $avatar = $request->file('avatar');
+        $filename = time() . '.' . $avatar->getClientOriginalExtension();
+        Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
+
+        $user = Auth::user();
+        $user->avatar = $filename;
+        $user->save();
+      }
+      return view('image')->withUser($user);
+    }
 }
