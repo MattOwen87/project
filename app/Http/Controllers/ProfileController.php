@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
@@ -137,11 +138,13 @@ class ProfileController extends Controller
         $avatar = $request->file('avatar');
         $filename = time() . '.' . $avatar->getClientOriginalExtension();
         Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
-
         $user = Auth::user();
+        $oldImage = $user->avatar;
         $user->avatar = $filename;
+        Storage::delete($oldImage);
         $user->save();
       }
+
       return view('image')->withUser($user);
     }
 }
