@@ -147,4 +147,45 @@ class ProfileController extends Controller
 
       return view('image')->withUser($user);
     }
+
+    public function delete(){
+      $user = User::find(Auth::user()->id);
+
+      if($user){
+        //USER EXISTS
+       return view('delete')->withUser($user);
+     }else{
+        //RETURN FALSE, USER DOES NOT EXIST
+        return redirect()->back();
+      }
+    }
+
+    public function deleteUser(Request $request){
+
+      $user = User::find(Auth::user()->id);
+
+      if($user){
+        $validate = null;
+          if(Auth::user()->email === $request['email'] && Hash::check($request['password'], $user->password)){
+            $validate = $request->validate([
+              'email'     => 'required|email',
+              'password'    => 'required'
+            ]);
+          }
+          if($validate){
+            $user->email = $request['email'];
+            //DELETES IMAGE FROM STORAGE
+            $avatar = $request->file('avatar');
+            $oldImage = $user->avatar;
+            Storage::delete($oldImage);
+            User::destroy($user->id);
+            return redirect()->route('welcome');
+          }else{
+            $request->session()->flash('error', 'Incorrect details please try again!');
+            return redirect()->back();
+          }
+    }else{
+      return redirect()->back();
+    }
+  }
 }

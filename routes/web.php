@@ -34,3 +34,7 @@ Route::post('/profile/password', 'ProfileController@passwordChange')->name('pass
 Route::get('/profile/image', 'ProfileController@image')->name('profile.image');
 
 Route::post('/profile/image', 'ProfileController@imageEdit')->name('image.edit');
+
+Route::get('/profile/delete', 'ProfileController@delete')->name('profile.delete');
+
+Route::post('/profile/delete', 'ProfileController@deleteUser')->name('delete.user');
