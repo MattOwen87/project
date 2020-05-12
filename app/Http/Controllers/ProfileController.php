@@ -141,7 +141,12 @@ class ProfileController extends Controller
         $user = Auth::user();
         $oldImage = $user->avatar;
         $user->avatar = $filename;
-        Storage::delete($oldImage);
+        if($oldImage == 'default-image.png'){
+          //DO NOT DELETE DEFAULT IMAGE
+        }else{
+          Storage::delete($oldImage);
+        }
+
         $user->save();
       }
 
@@ -177,9 +182,13 @@ class ProfileController extends Controller
             //DELETES IMAGE FROM STORAGE
             $avatar = $request->file('avatar');
             $oldImage = $user->avatar;
-            Storage::delete($oldImage);
+            if($oldImage == 'default-image.png'){
+              //DO NOT DELETE DEFAULT IMAGE
+            }else{
+              Storage::delete($oldImage);
+            }
             User::destroy($user->id);
-            return redirect()->route('welcome');
+            return redirect()->route('home');
           }else{
             $request->session()->flash('error', 'Incorrect details please try again!');
             return redirect()->back();
