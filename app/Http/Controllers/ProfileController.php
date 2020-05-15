@@ -188,7 +188,7 @@ class ProfileController extends Controller
               Storage::delete($oldImage);
             }
             User::destroy($user->id);
-            return redirect()->route('home');
+            return redirect()->route('register')->with('success', 'Your account has been successfully deleted');
           }else{
             $request->session()->flash('error', 'Incorrect details please try again!');
             return redirect()->back();
