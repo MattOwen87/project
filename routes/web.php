@@ -38,3 +38,7 @@ Route::post('/profile/image', 'ProfileController@imageEdit')->name('image.edit')
 Route::get('/profile/delete', 'ProfileController@delete')->name('profile.delete');
 
 Route::post('/profile/delete', 'ProfileController@deleteUser')->name('delete.user');
+
+Route::get('/threads', 'ThreadController@index')->name('thread.index');
+
+Route::get('/threads/{thread}', 'ThreadController@show')->name('thread.show');
