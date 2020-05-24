@@ -42,3 +42,5 @@ Route::post('/profile/delete', 'ProfileController@deleteUser')->name('delete.use
 Route::get('/threads', 'ThreadController@index')->name('thread.index');
 
 Route::get('/threads/{thread}', 'ThreadController@show')->name('thread.show');
+
+Route::post('/threads/{thread}/replies', 'ReplyController@store')->name('reply.add');
