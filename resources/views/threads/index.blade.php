@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+  @if(auth()->check())
+  <a href="{{ route('thread.create') }}">Create New Thread</a>
+  @else
+  <p>To create a new thread <a href="{{ route('login') }}">Login</a> or <a href="{{ route('register') }}">Register</a> for an account!</p>
+  @endif
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
