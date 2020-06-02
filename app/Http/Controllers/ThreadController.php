@@ -49,7 +49,7 @@ class ThreadController extends Controller
         'body' => request('body')
       ]);
 
-      return redirect()->back();
+      return redirect($thread->path());
     }
 
     /**

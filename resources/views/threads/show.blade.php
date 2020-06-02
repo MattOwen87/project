@@ -38,7 +38,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-          <form method="POST" action="{{ route('reply.add', $reply) }}">
+          <form method="POST" action="{{ route('reply.add', $thread) }}">
             @csrf
 
             <div class="form-group">
