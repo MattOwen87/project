@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Channel;
 use App\Thread;
 use App\Reply;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Thread $thread)
+    public function store(Channel $channel, Thread $thread)
     {
         $thread->addReply([
           'body' => request('body'),
