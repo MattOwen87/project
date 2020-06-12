@@ -47,4 +47,6 @@ Route::post('/threads', 'ThreadController@store')->name('thread.store');
 
 Route::get('/threads/{channel}/{thread}', 'ThreadController@show')->name('thread.show');
 
+Route::get('/threads/{channel}', 'ThreadController@index')->name('channel.index');
+
 Route::post('/threads/{thread}/replies', 'ReplyController@store')->name('reply.add');
