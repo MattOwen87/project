@@ -52,6 +52,12 @@
                             @endforeach
                         </div>
                       </li>
+
+                      @auth
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ route('thread.create') }}">Create New Thread</a>
+                      </li>
+                      @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
