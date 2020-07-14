@@ -29,6 +29,11 @@ class ThreadController extends Controller
         $threads->where('user_id', $user->id);
       }
 
+      if(request('popular')){
+        $threads->getQuery()->orders = [];
+        $threads->orderBy('replies_count', 'desc');
+      }
+
       $threads = $threads->get();
 
         return view('threads.index', compact('threads'));

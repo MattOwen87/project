@@ -51,4 +51,6 @@ Route::get('/threads/{channel}', 'ThreadController@index')->name('channel.index'
 
 Route::get('/threads?by={user}', 'ThreadController@index')->name('userThreads.index');
 
+Route::get('/threads?popular=1', 'ThreadController@index')->name('popularThreads.index');
+
 Route::post('/threads/{thread}/replies', 'ReplyController@store')->name('reply.add');

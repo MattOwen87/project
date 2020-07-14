@@ -11,7 +11,7 @@
                 <div class="card">
                   <div class="card-header">
                     <h4><a href="{{route('thread.show', ['channel'=>$thread->channel->slug, 'thread'=>$thread->id])}}">{{ $thread->title }}</a></h4>
-                    <p>This thread was published {{ $thread->created_at->diffForHumans() }} by <a href="#">{{ $thread->creator->username }}</a> and currently has {{ $thread->replies()->count() }} {{ Str::plural('reply', $thread->replies()->count()) }}.</p>
+                    <p>This thread was published {{ $thread->created_at->diffForHumans() }} by <a href="#">{{ $thread->creator->username }}</a> and currently has {{ $thread->replies_count }} {{ Str::plural('reply', $thread->replies_count) }}.</p>
                   </div>
                     <div class="card-body">
                         <p>{{ $thread->body }}</p>
